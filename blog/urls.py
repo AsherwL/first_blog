@@ -1,5 +1,8 @@
 from django.urls import path
 from .views import accueil, articles_par_categorie, detail_article, recherche_articles, a_propos, contact
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
     path('', accueil, name='accueil'),
@@ -9,3 +12,6 @@ urlpatterns = [
     path('a-propos/', a_propos, name='a_propos'),  # URL pour la page À Propos
     path('contact/', contact, name='contact'),  # URL pour la page Contact
 ]
+
+if settings.DEBUG:  # Seulement en mode développement
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

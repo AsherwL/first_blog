@@ -32,13 +32,13 @@ def articles_par_categorie(request, categorie):
 
 def detail_article (request, article_id):
     article = get_object_or_404(Article, id=article_id)
-    return render(request, "blog/detail_article", context={"article": article})
+    return render(request, "blog/detail_article.html", context={"article": article})
 
 
 def recherche_articles(request):
     """ Recherche d'articles avec pagination """
     query = request.GET.get("q", "")
-    articles_list = Article.objects.filter(Q(titre__icontains=query) | Q(contenu__icontains=query)) if query else []
+    articles_list = Article.objects.filter(Q(titre__icontains=query).html | Q(contenu__icontains=query)) if query else []
 
     # Pagination : 5 résultats par page
     paginator = Paginator(articles_list, 5)

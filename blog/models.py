@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class Article(models.Model):
     CATEGORY_CHOICES = [
-        ('lecture','Lectures'),
+        ('livres','Livres'),
         ('plume', 'Plume'),
         ('meditations', 'Méditations'),
         ('Anime_musique_series','Animé musique & séries '),

@@ -142,6 +142,10 @@ CSRF_TRUSTED_ORIGINS = [
     "https://hrsphere.up.railway.app",
 ]
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+
 # Personnalisation Django Admin
 ADMIN_SITE_HEADER = "Gestion du Blog - Asher"
 ADMIN_SITE_TITLE = "Mon Blog Admin"
