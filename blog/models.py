@@ -6,7 +6,7 @@ class Article(models.Model):
         ('livres','Livres'),
         ('plume', 'Plume'),
         ('meditations', 'Méditations'),
-        ('Anime_musique_series','Animé musique & séries '),
+        ('anime_musique_series','Animé musique & séries '),
     ]
 
     titre = models.CharField(max_length=255)
