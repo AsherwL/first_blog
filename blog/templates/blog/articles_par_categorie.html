@@ -5,7 +5,7 @@
 
 <!-- Section Titre : Design Amélioré -->
 <section class="text-center py-16 bg-gradient-to-r from-gray-900 to-gray-800 shadow-lg rounded-lg">
-    <h1 class="text-5xl font-extrabold text-white">{{ categorie|title }}</h1>
+    <h1 class="text-2xl md:text-4xl lg:text-5xl font-extrabold text-white animate-glow">{{ categorie|title }}</h1>
     <p class="mt-4 text-lg text-gray-300">Découvrez tous les articles de cette catégorie.</p>
 </section>
 
@@ -78,5 +78,16 @@
         </a>
     {% endif %}
 </div>
+<style>
+@keyframes glow {
+    0% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.25); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.8; }
+}
 
+.animate-glow {
+    animation: glow 2s infinite ease-in-out;
+}
+</style>
+{% endblock %}
 {% endblock %}
