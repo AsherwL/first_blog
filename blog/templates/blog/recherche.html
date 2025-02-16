@@ -1,0 +1,64 @@
+{% extends "blog/base.html" %}
+{% block title %}Résultats pour "{{ query }}"{% endblock %}
+
+{% block content %}
+
+<!-- Section Titre -->
+<section class="text-center py-16 bg-gradient-to-r from-gray-900 to-gray-800 shadow-lg rounded-lg">
+    <h1 class="text-4xl font-extrabold text-white">🔍 Résultats pour "{{ query }}"</h1>
+    <p class="mt-4 text-lg text-gray-300">Voici les articles correspondant à votre recherche.</p>
+</section>
+
+<!-- Résultats de Recherche -->
+<div class="max-w-4xl mx-auto mt-10 px-4">
+    {% if articles %}
+        <div class="grid gap-6 md:grid-cols-2">
+            {% for article in articles %}
+                <div class="bg-gray-800 text-white p-6 rounded-lg shadow-lg hover:scale-105 transition transform duration-300">
+                    <h3 class="text-xl font-semibold mb-2">
+                        <a href="{% url 'detail_article' article.id %}" class="hover:text-gray-400 transition">
+                            {{ article.titre }}
+                        </a>
+                    </h3>
+                    <p class="text-sm text-gray-400">📅 Publié le {{ article.date_publication|date:"d M Y" }}</p>
+                    <p class="text-gray-300 mt-2 text-justify line-clamp-3">
+                        {{ article.contenu|truncatewords:20 }}
+                    </p>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-center text-gray-500 mt-6 text-lg">Aucun résultat trouvé pour "{{ query }}".</p>
+    {% endif %}
+</div>
+
+<!-- Pagination -->
+<div class="mt-10 flex justify-center items-center space-x-3">
+    {% if articles.has_previous %}
+        <a href="?q={{ query }}&page=1"
+           class="px-5 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-500 transition">
+            ⏮ Début
+        </a>
+        <a href="?q={{ query }}&page={{ articles.previous_page_number }}"
+           class="px-5 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-500 transition">
+            ⬅ Précédent
+        </a>
+    {% endif %}
+
+    <span class="px-6 py-3 bg-gray-700 text-white rounded-lg text-lg">
+        Page {{ articles.number }} / {{ articles.paginator.num_pages }}
+    </span>
+
+    {% if articles.has_next %}
+        <a href="?q={{ query }}&page={{ articles.next_page_number }}"
+           class="px-5 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-500 transition">
+            Suivant ➡
+        </a>
+        <a href="?q={{ query }}&page={{ articles.paginator.num_pages }}"
+           class="px-5 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-500 transition">
+            ⏭ Fin
+        </a>
+    {% endif %}
+</div>
+
+{% endblock %}

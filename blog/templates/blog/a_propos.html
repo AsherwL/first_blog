@@ -1,0 +1,47 @@
+{% extends "blog/base.html" %}
+{% block title %}À Propos{% endblock %}
+
+{% block content %}
+
+<!-- Section Héro -->
+<section class="text-center py-16 bg-gradient-to-r from-gray-900 to-gray-800 shadow-lg rounded-lg">
+    <h1 class="text-5xl font-extrabold text-white">À Propos de Moi</h1>
+    <p class="mt-4 text-lg text-gray-300">Découvrez qui je suis et pourquoi j’ai créé ce blog.</p>
+</section>
+
+<!-- Contenu Principal : Justifié & Amélioré -->
+<div class="mt-10 bg-gray-800 text-white p-8 rounded-lg shadow-lg max-w-4xl mx-auto">
+
+    <h2 class="text-3xl font-semibold text-indigo-400">👋 Qui suis-je ?</h2>
+    <p class="mt-4 text-lg text-gray-300 leading-relaxed tracking-wide text-justify">
+        Je suis <span class="text-indigo-400 font-semibold">Asher</span>, passionné de
+        <span class="text-indigo-300">littérature</span>, de <span class="text-indigo-300">spiritualité</span>
+        et de <span class="text-indigo-300">sport</span>. J’ai créé ce blog pour partager
+        mes pensées, critiques et inspirations sur tout ce qui me fascine.
+    </p>
+
+    <h2 class="text-3xl font-semibold text-indigo-400 mt-8">🎯 Pourquoi ce blog ?</h2>
+    <p class="mt-4 text-lg text-gray-300 leading-relaxed tracking-wide text-justify">
+        Ce blog est un espace d’expression où je parle de mes <span class="text-indigo-300">lectures</span>,
+        de <span class="text-indigo-300">poésie</span>, de <span class="text-indigo-300">films</span>,
+        d’<span class="text-indigo-300">animés</span> et de tout ce qui m’inspire au quotidien.
+        Mon objectif est de créer un lieu où l’on peut échanger et découvrir ensemble.
+    </p>
+
+    <h2 class="text-3xl font-semibold text-indigo-400 mt-8">🚀 Mes inspirations</h2>
+    <p class="mt-4 text-lg text-gray-300 leading-relaxed tracking-wide text-justify">
+        J’admire les auteurs et créateurs qui savent raconter des histoires avec passion et émotion.
+        De <span class="text-indigo-300">Mickael Launay</span> à <span class="text-indigo-300">Mark Manson</span>,
+        chaque œuvre est une porte ouverte vers un nouvel univers.
+    </p>
+</div>
+
+<!-- Bouton Retour -->
+<div class="text-center mt-10">
+    <a href="{% url 'accueil' %}"
+       class="bg-gray-700 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-gray-600 transition text-lg font-semibold">
+        ⬅ Retour à l’Accueil
+    </a>
+</div>
+
+{% endblock %}

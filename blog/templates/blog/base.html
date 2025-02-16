@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mon Blog{% endblock %}</title>
+
+    {% load static %}
+
+    <!-- TailwindCSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- HTMX -->
+    <script src="https://unpkg.com/htmx.org@1.9.6"></script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{% static 'images/a.png' %}" class="rounded-full">
+</head>
+<body class="bg-gray-900 text-white">
+
+    {% include "blog/navbar.html" %}
+
+    <main class="max-w-5xl mx-auto mt-10 p-6">
+        {% block content %}{% endblock %}
+    </main>
+
+    {% include "blog/footer.html" %}
+
+</body>
+</html>

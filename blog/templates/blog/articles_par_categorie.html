@@ -1,0 +1,82 @@
+{% extends "blog/base.html" %}
+{% block title %}Articles - {{ categorie|title }}{% endblock %}
+
+{% block content %}
+
+<!-- Section Titre : Design Amélioré -->
+<section class="text-center py-16 bg-gradient-to-r from-gray-900 to-gray-800 shadow-lg rounded-lg">
+    <h1 class="text-5xl font-extrabold text-white">{{ categorie|title }}</h1>
+    <p class="mt-4 text-lg text-gray-300">Découvrez tous les articles de cette catégorie.</p>
+</section>
+
+<!-- Tableau des Articles : Responsive amélioré -->
+<div class="mt-10 overflow-hidden rounded-lg shadow-lg border border-gray-700">
+    <table class="w-full bg-gray-800 text-white border-collapse">
+        <thead class="bg-indigo-600 text-white hidden md:table-header-group">
+            <tr>
+                <th class="py-4 px-6 text-left">📌 Titre</th>
+                <th class="py-4 px-6 text-left">📅 Publié le</th>
+                <th class="py-4 px-6 text-center">🔗 Lire</th>
+            </tr>
+        </thead>
+        <tbody class="block md:table-row-group">
+            {% for article in articles %}
+            <tr class="border-b border-gray-700 hover:bg-gray-700 transition duration-300 block md:table-row">
+                <!-- Titre avec gestion des textes longs -->
+                <td class="py-4 px-6 block md:table-cell">
+                    <span class="md:hidden font-semibold text-indigo-400">📌 Titre : </span>
+                    <span class="truncate block md:inline w-full max-w-[200px] md:max-w-none">{{ article.titre }}</span>
+                </td>
+                <!-- Date -->
+                <td class="py-4 px-6 block md:table-cell">
+                    <span class="md:hidden font-semibold text-indigo-400">📅 Publié : </span>
+                    {{ article.date_publication|date:"d M Y" }}
+                </td>
+                <!-- Bouton Lire -->
+                <td class="py-4 px-6 text-center block md:table-cell">
+                    <a href="{% url 'detail_article' article.id %}"
+                       class="bg-indigo-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-indigo-400 transition block md:inline">
+                        📖 Lire
+                    </a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3" class="py-6 text-center text-gray-400 text-lg">
+                    Aucun article disponible pour le moment.
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Pagination : Design Amélioré -->
+<div class="mt-8 flex flex-wrap justify-center items-center space-x-3">
+    {% if articles.has_previous %}
+        <a href="?page=1" class="px-5 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-500 transition">
+            ⏮ Début
+        </a>
+        <a href="?page={{ articles.previous_page_number }}"
+           class="px-5 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-500 transition">
+            ⬅ Précédent
+        </a>
+    {% endif %}
+
+    <span class="px-6 py-3 bg-gray-700 text-white rounded-lg text-lg">
+        Page {{ articles.number }} / {{ articles.paginator.num_pages }}
+    </span>
+
+    {% if articles.has_next %}
+        <a href="?page={{ articles.next_page_number }}"
+           class="px-5 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-500 transition">
+            Suivant ➡
+        </a>
+        <a href="?page={{ articles.paginator.num_pages }}"
+           class="px-5 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-500 transition">
+            ⏭ Fin
+        </a>
+    {% endif %}
+</div>
+
+{% endblock %}
