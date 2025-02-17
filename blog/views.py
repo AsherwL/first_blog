@@ -38,7 +38,7 @@ def detail_article (request, article_id):
 def recherche_articles(request):
     """ Recherche d'articles avec pagination """
     query = request.GET.get("q", "")
-    articles_list = Article.objects.filter(Q(titre__icontains=query).html | Q(contenu__icontains=query)) if query else []
+    articles_list = Article.objects.filter(Q(titre__icontains=query) | Q(contenu__icontains=query)) if query else []
 
     # Pagination : 5 résultats par page
     paginator = Paginator(articles_list, 5)
