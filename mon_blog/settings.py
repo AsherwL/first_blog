@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-%$ddsyik&1hwr_)#@zko_$nmpvmf%g7ytle#r97rzly0!*7y1j
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["hrsphere.up.railway.app", "127.0.0.1", "localhost"]
+ALLOWED_HOSTS = ["hrspher.up.railway.app", "127.0.0.1", "localhost"]
 
 
 
@@ -150,3 +150,4 @@ MEDIA_ROOT = BASE_DIR / 'media'
 ADMIN_SITE_HEADER = "Gestion du Blog - Asher"
 ADMIN_SITE_TITLE = "Mon Blog Admin"
 ADMIN_INDEX_TITLE = "Bienvenue dans l'espace d'administration"
+
